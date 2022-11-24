@@ -4,7 +4,11 @@ class Merchant {
   String logo;
   String name;
   Color? color;
-  bool? online = false;
+  bool online = false;
 
-  Merchant({required this.name, required this.logo, this.color, this.online});
+  Merchant(
+      {required this.name,
+      required this.logo,
+      this.color,
+      required this.online});
 }

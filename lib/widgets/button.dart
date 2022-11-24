@@ -1,4 +1,4 @@
-import 'package:credpal_test/Helpers/constants/app_colors.dart';
+import 'package:credpal_test/Helpers/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

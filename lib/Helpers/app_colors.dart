@@ -15,7 +15,7 @@ class Pallete {
   static const titleText = Color(0xff33334D);
   static const defaultWhite = Color(0xffFFFFFF);
   static const greenColor = Color(0xff24C78B);
-  // static const whiteColor = Color(0xff0D000000);
+  static const casper = Color(0xffFE2B5E);
   // static const whiteColor = Color(0xff0D000000);
   // static const whiteColor = Color(0xff0D000000);
   // static const whiteColor = Color(0xff0D000000);
