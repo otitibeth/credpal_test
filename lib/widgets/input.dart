@@ -1,4 +1,5 @@
 import 'package:credpal_test/Helpers/app_colors.dart';
+import 'package:credpal_test/Helpers/global_variable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +15,11 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40.h,
-      width: 309.w,
+      width: isMobile(context)
+          ? 309.w
+          : isDesktop(context)
+              ? 170.w
+              : 250.w,
       child: TextFormField(
         style: TextStyle(
           fontFamily: 'Avenir',

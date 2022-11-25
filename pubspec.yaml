@@ -76,6 +76,9 @@ flutter:
     - family: Axiforma
       fonts:
         - asset: assets/fonts/Axiforma-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
     - family: Avenir
       fonts:
         - asset: assets/fonts/Avenir-Black.otf

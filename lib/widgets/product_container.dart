@@ -1,4 +1,5 @@
 import 'package:credpal_test/Helpers/app_colors.dart';
+import 'package:credpal_test/Helpers/global_variable.dart';
 import 'package:credpal_test/models/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,8 +48,8 @@ class ProductContainer extends StatelessWidget {
                     top: 5.sp,
                     // bottom: 13.sp
                   ),
-                  width: 135.w,
-                  height: 105.h,
+                  width: !isMobile(context) ? 155.w : 135.w,
+                  height: !isMobile(context) ? 125.h : 105.h,
                   child: Image.asset(
                     product.image,
                     fit: BoxFit.cover,
@@ -98,10 +99,19 @@ class ProductContainer extends StatelessWidget {
           ),
           Positioned(
             top: 6.sp,
-            left: 7.sp,
+            // left: !isMobile(context) ? 0.sp : 7.sp,
+            right: !isMobile(context) ? 100.sp : 115.sp,
             child: Container(
-              width: 50.w,
-              height: 50.h,
+              width: isMobile(context)
+                  ? 50.w
+                  : isMedium(context)
+                      ? 40.w
+                      : 35.w,
+              height: isMobile(context)
+                  ? 50.h
+                  : isMedium(context)
+                      ? 40.h
+                      : 35.h,
               decoration: const BoxDecoration(
                   color: Pallete.defaultWhite, shape: BoxShape.circle),
               child: Padding(

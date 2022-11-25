@@ -10,7 +10,6 @@ class AppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     const ngn = '\u20A6';
     return Container(
       padding: EdgeInsets.only(left: 20.sp, right: 16.sp, top: 18.sp),
@@ -44,7 +43,9 @@ class AppBarWidget extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 52.sp, left: 3.sp),
+            padding: EdgeInsets.only(
+                top: !isMobile(context) ? 46.sp : 52.sp,
+                left: !isMobile(context) ? 0.sp : 3.sp),
             child: SizedBox(
                 height: 17.h,
                 width: 17.w,
@@ -65,7 +66,13 @@ class AppBarWidget extends StatelessWidget {
                       fontFamily: 'Avenir'),
                 ),
                 SizedBox(height: 10.h),
-                const CustomButton()
+                CustomButton(
+                  width: isMobile(context)
+                      ? 134.w
+                      : isDesktop(context)
+                          ? 70.w
+                          : 90.w,
+                )
               ],
             ),
           )

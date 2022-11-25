@@ -1,4 +1,5 @@
 import 'package:credpal_test/Helpers/app_colors.dart';
+import 'package:credpal_test/Helpers/global_variable.dart';
 import 'package:credpal_test/Helpers/lists.dart';
 import 'package:credpal_test/widgets/merchant_container.dart';
 import 'package:credpal_test/widgets/product_container.dart';
@@ -13,7 +14,6 @@ class ShoppingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
           child: GestureDetector(
@@ -21,7 +21,6 @@ class ShoppingView extends StatelessWidget {
         child: Column(
           children: [
             const AppBarWidget(),
-            // Text('$width'),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.sp),
               child: SizedBox(
@@ -29,7 +28,11 @@ class ShoppingView extends StatelessWidget {
                 width: 414.w,
                 child: Row(children: [
                   const SearchField(),
-                  const Spacer(),
+                  !isMobile(context)
+                      ? SizedBox(
+                          width: 40.w,
+                        )
+                      : const Spacer(),
                   Container(
                     padding: EdgeInsets.all(7.sp),
                     height: 45.h,
@@ -104,8 +107,14 @@ class ShoppingView extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: merchants.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4, childAspectRatio: 1.9.sp / 2.sp),
-                  // 2.5.sp / 2.sp emulator
+                    crossAxisCount: isDesktop(context)
+                        ? 6
+                        : isMedium(context)
+                            ? 5
+                            : 4,
+                    childAspectRatio:
+                        isDesktop(context) ? 2.9.sp / 2.sp : 1.9.sp / 2.sp,
+                  ),
                   itemBuilder: (context, index) =>
                       MerchantContainer(merchant: merchants[index]),
                 ),

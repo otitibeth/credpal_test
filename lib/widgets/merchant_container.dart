@@ -1,8 +1,7 @@
 import 'package:credpal_test/Helpers/app_colors.dart';
+import 'package:credpal_test/Helpers/global_variable.dart';
 import 'package:credpal_test/models/merchants_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,11 +11,8 @@ class MerchantContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return SizedBox(
       height: 82.h,
-      // width: 30.w,
       child: Column(
         children: [
           Container(
@@ -30,13 +26,16 @@ class MerchantContainer extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Image.asset(
                     merchant.logo,
-                    // fit: BoxFit.cover,
                   ),
                 ),
                 merchant.online
                     ? Positioned(
                         top: 0,
-                        right: 5.sp,
+                        right: isMobile(context)
+                            ? 5.sp
+                            : isDesktop(context)
+                                ? 75.sp
+                                : 23.sp,
                         // 12.sp (emulator)
                         // bottom: 3.sp,
                         child: Container(
@@ -60,8 +59,7 @@ class MerchantContainer extends StatelessWidget {
             merchant.name,
             style: TextStyle(
                 fontFamily: 'Avenir',
-                fontSize: 12.sp,
-                // 16.sp emulator
+                fontSize: !isMobile(context) ? 16.sp : 12.sp,
                 fontWeight: FontWeight.w500,
                 color: Pallete.textColor),
           ),
